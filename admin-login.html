@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login — Remi Dee Gadgets</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /*
+    This page is intentionally not linked from index.html, the nav, or the
+    footer. It is reachable only by its direct URL, keeping the admin area
+    separate from the customer-facing storefront as requested. Real
+    authentication, sessions, and access control are wired up once the
+    backend is built — this is the front-end shell only.
+  */
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .admin-shell { width: 100%; max-width: 400px; padding: 20px; }
+  .admin-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 40px 34px;
+  }
+  .admin-logo { display: flex; justify-content: center; margin-bottom: 26px; }
+  .admin-logo img { height: 40px; }
+  .admin-card h1 { font-size: 1.3rem; text-align: center; margin-bottom: 6px; }
+  .admin-card p.sub { text-align: center; font-size: 0.88rem; margin-bottom: 28px; }
+  .admin-badge {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(242,194,48,0.12); border: 1px solid var(--gold); color: var(--gold);
+    margin: 0 auto 18px;
+  }
+  .admin-badge svg { width: 24px; height: 24px; }
+  .field-note { font-size: 0.78rem; color: var(--ink-faint); margin-top: 18px; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="admin-shell">
+    <div class="admin-card">
+      <div class="admin-badge" id="lock-icon"></div>
+      <h1>Admin sign in</h1>
+      <p class="sub">Manage products, prices and orders for Remi Dee Gadgets.</p>
+      <form id="admin-login-form">
+        <div class="field">
+          <label for="admin-user">Admin username</label>
+          <input id="admin-user" type="text" autocomplete="username" required placeholder="Enter your admin username">
+        </div>
+        <div class="field">
+          <label for="admin-pass">Password</label>
+          <input id="admin-pass" type="password" autocomplete="current-password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        <p class="field-note" id="admin-note">This is a front-end preview &mdash; sign-in will connect to the real admin backend once it's built.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/icons.js"></script>
+  <script>
+    document.getElementById('lock-icon').innerHTML = ICONS.lock;
+    document.getElementById('admin-login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var note = document.getElementById('admin-note');
+      note.textContent = 'Admin backend is not connected yet, so sign-in cannot be completed. This page is ready for that integration.';
+      note.style.color = 'var(--gold)';
+    });
+  </script>
+</body>
+</html>
